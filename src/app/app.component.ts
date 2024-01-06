@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'student-list';
+  isModalOpen=false;
+  constructor(){}
+
+
+  onModalToggle(){
+    this.isModalOpen = !this.isModalOpen
+  }
 }

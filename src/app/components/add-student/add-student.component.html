@@ -1,0 +1,21 @@
+<div class="modal-screen" (click)="onModalClose()">
+  <div class="modal d-block"  >
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Student</h5>
+          <button type="button" (click)="onModalClose()" class="btn-close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <h2>Add new student</h2>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="onModalClose()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="onModalClose()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
