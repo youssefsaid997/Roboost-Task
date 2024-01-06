@@ -1,0 +1,12 @@
+<input class="form-control" [formControl]="control">
+<ng-container *ngIf="control.errors && control.touched">
+    <div *ngIf="control.errors['required']">
+        value is required
+    </div>
+    <div *ngIf="control.errors['minlength']">
+        input is too short
+    </div>
+    <div *ngIf="control.errors['min']">
+        values is too low your age must be between 17 to 26
+    </div>
+</ng-container>
