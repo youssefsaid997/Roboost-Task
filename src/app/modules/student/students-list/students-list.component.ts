@@ -43,6 +43,6 @@ export class StudentsListComponent {
   }
 
   onStudentDelete(id:number ){
-    this.studentService.deleteStudent(id)    
+    this.studentService.deleteStudent(id)
   }
 }
