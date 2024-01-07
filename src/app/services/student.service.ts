@@ -43,6 +43,9 @@ export class StudentService {
   }
 
   deleteStudent(id:number){
-    this.httpClient.delete(`https://api.mohamed-sadek.com/Student/Delete?id=${id}`)
+    this.httpClient.delete(`https://api.mohamed-sadek.com/Student/Delete?id=${id}`).subscribe((data)=>{
+      console.log(data);
+      
+    })
   }
 }
