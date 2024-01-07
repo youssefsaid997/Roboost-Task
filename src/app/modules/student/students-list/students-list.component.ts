@@ -42,14 +42,18 @@ export class StudentsListComponent{
   ngAfterViewInit(){
     this.studentService.getStudents().subscribe((res:IResponse|any)=>{
       this.students = res.Data
+      this.showedStudents=[...res.Data]
+
     });
     
   }
-  ngAfterContentChecked(){
+
+  ngDoCheck(){
     if(!this.searchQuery){
-      console.log(this.students);
+    }else{
+      this.showedStudents=this.students
+      console.log(this.showedStudents);
     }
-    this.showedStudents=this.students
     
   }
   onSearchChange(value:any){
