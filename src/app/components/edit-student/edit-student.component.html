@@ -1,5 +1,5 @@
 <div class="container container-md">
-    <form [formGroup]="editForm" class="form" (submit)="onEditStudent($event)">
+    <form [formGroup]="editForm" class="form" >
         <div class="row">
             <div class="col-12 col-md-6">
                 <label for="">Student First Name</label>
@@ -40,7 +40,7 @@
 
         
         <div class="row mt-4 d-flex justify-content-center align-items-center" >
-            <button class="btn btn-outline-primary w-75">submit</button>
+            <a routerLink="/student" class="btn btn-outline-primary w-75" (click)="onEditStudent($event)">submit</a>
         </div>
        
     </form>

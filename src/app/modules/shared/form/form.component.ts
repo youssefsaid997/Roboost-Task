@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -21,8 +21,6 @@ export class FormComponent {
   onCreateStudent(event:Event){
     event.preventDefault()
     const data = this.createStudentForm.value;
-    console.log(data);
-    
     this.createStudent.emit(data)
   }
 }
