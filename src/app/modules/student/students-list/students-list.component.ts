@@ -9,10 +9,12 @@ import { StudentService } from 'src/app/services/student.service';
   templateUrl: './students-list.component.html',
   styleUrls: ['./students-list.component.css']
 })
-export class StudentsListComponent implements OnChanges{
+export class StudentsListComponent{
 
   students:IStudent[]|undefined
-
+  searchQuery=""
+  showedStudents:IStudent[]|undefined
+  filteredStudents:IStudent[]|undefined
   subscriber!: Subscription;
   constructor(private studentService:StudentService){
 
@@ -31,21 +33,39 @@ export class StudentsListComponent implements OnChanges{
   }
 
   ngOnInit(){
-   this.studentService.getStudents().subscribe((res:IResponse|any)=>{
-    this.students = res.Data;
-   })
+    this.studentService.getStudents().subscribe((res:IResponse|any)=>{
+      this.students = res.Data
+      this.showedStudents=[...res.Data]
+    });
+  }
 
+  ngAfterViewInit(){
+    this.studentService.getStudents().subscribe((res:IResponse|any)=>{
+      this.students = res.Data
+    });
     
+  }
+  ngAfterContentChecked(){
+    if(!this.searchQuery){
+      console.log(this.students);
+    }
+    this.showedStudents=this.students
+    
+  }
+  onSearchChange(value:any){
+    this.searchQuery=value
+    if(this.searchQuery){
+      this.filteredStudents = this.students?.filter(student=>{
+        return student.Name.toLowerCase().includes(value)
+      })
+      this.showedStudents=this.filteredStudents;
+    }else{
+      this.showedStudents=this.students
+    }
   }
 
   onEditClick(id:number){
     console.log(id)
-  }
-
-  ngOnChanges(){
-    this.studentService.getStudents().subscribe((res:IResponse|any)=>{
-      this.students = res.Data;
-     })
   }
 
   onStudentDelete(id:number ){

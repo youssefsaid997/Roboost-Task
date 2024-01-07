@@ -13,7 +13,7 @@ export class StudentService {
 
 
   getStudents(){
-    return this.httpClient.get("https://api.mohamed-sadek.com/Student/Get")
+    return this.httpClient.get("https://api.mohamed-sadek.com/Student/Get");
   }
 
   createStudent(student:IStudent){
@@ -22,12 +22,7 @@ export class StudentService {
   }
 
   updateStudent(student:any ,id:string){
-    console.log(+id ,student);
-    // i couldn't access the targeted student without id 
-    console.log(student);
-    
     const updatedStudent = {
-
       ...student,
       id:+id,
       NameEnglish:student.firstName+ " "+ student.lastName,
@@ -49,4 +44,5 @@ export class StudentService {
       
     })
   }
+
 }

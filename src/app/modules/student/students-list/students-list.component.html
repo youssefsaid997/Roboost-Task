@@ -1,3 +1,4 @@
+<app-search (searchChange)="onSearchChange($event)"></app-search>
 <div class="bg-dark">
     <table class="table">
       <thead>
@@ -8,14 +9,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students">
-          <td>{{student.Name}}</td>
-          <td>{{student.Age}}</td>
-          <td>{{student.NationalID}}</td>
-          <td>{{student.Email}}</td>
-          <td><a class="btn btn-warning" [routerLink]="student.ID+''" (click)="onEditClick(student.ID)">Edit</a></td>
-          <td><button class="btn btn-danger" (click)="onStudentDelete(student.ID)">Delete</button></td>
-        </tr>
+          <tr *ngFor="let student of showedStudents">
+         
+              <td>{{student.Name}}</td>
+              <td>{{student.Age}}</td>
+              <td>{{student.NationalID}}</td>
+              <td>{{student.Email}}</td>
+              <td><a class="btn btn-warning" [routerLink]="student.ID+''" (click)="onEditClick(student.ID)">Edit</a></td>
+              <td><button class="btn btn-danger" (click)="onStudentDelete(student.ID)">Delete</button></td>
+          </tr>
       </tbody>
     </table>
   </div>
