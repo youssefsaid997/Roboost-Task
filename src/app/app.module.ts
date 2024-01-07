@@ -9,7 +9,7 @@ import { EditStudentComponent } from './components/edit-student/edit-student.com
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { InputComponent } from './components/input/input.component';
+import { SharedModule } from './modules/shared/shared.module';
 
 
 @NgModule({
@@ -18,14 +18,14 @@ import { InputComponent } from './components/input/input.component';
     EditStudentComponent,
     WelcomePageComponent,
     ErrorPageComponent,
-    InputComponent,
+
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    StudentModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

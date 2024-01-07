@@ -7,13 +7,10 @@
           <button type="button" (click)="onModalClose()" class="btn-close"></button>
         </div>
         <div class="modal-body">
-          <form action="">
-            <h2>Add new student</h2>
-          </form>
+          <app-form-shared (createStudent)="onSubmit($event)"></app-form-shared>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" (click)="onModalClose()">Close</button>
-          <button type="button" class="btn btn-primary" (click)="onModalClose()">Save changes</button>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-outline-danger w-75 " (click)="onModalClose()">Close</button>
         </div>
       </div>
     </div>
