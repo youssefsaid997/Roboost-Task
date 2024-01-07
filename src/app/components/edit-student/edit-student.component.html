@@ -1,13 +1,13 @@
 <div class="container container-md">
-    <form [formGroup]="editForm" class="form">
+    <form [formGroup]="editForm" class="form" (submit)="onEditStudent($event)">
         <div class="row">
             <div class="col-12 col-md-6">
-                <label for="">Student Name</label>
-                <app-input [control]="editForm.controls.name"></app-input>
+                <label for="">Student First Name</label>
+                <app-input [control]="editForm.controls.firstName"></app-input>
             </div>
             <div class="col-12 col-md-6">
-                <label for="">Student Email</label>
-                <app-input [control]="editForm.controls.email"></app-input>
+                <label for="">Student Last Name</label>
+                <app-input [control]="editForm.controls.lastName"></app-input>
             </div>
         </div>
 
@@ -21,6 +21,23 @@
                 <app-input [control]="editForm.controls.age"></app-input>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <label for="">Student Email</label>
+                <app-input [control]="editForm.controls.email"></app-input>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="">Student Mobile</label>
+                <app-input [control]="editForm.controls.mobile"></app-input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 ">
+                <label for="">Student Name in Arabic</label>
+                <app-input [control]="editForm.controls.NameArabic"></app-input>
+            </div>
+        </div>
+
         
         <div class="row mt-4 d-flex justify-content-center align-items-center" >
             <button class="btn btn-outline-primary w-75">submit</button>
@@ -28,12 +45,3 @@
        
     </form>
 </div>
-
-<div>
-    <h2>{{editForm.value | json}}</h2>
-    <h2>{{editForm.valid | json}}</h2>
-</div>
-<h2>{{editForm.controls.age.valid}}</h2>
-<h2>{{editForm.controls.email.valid}}</h2>
-<h2>{{editForm.controls.name.valid}}</h2>
-<h2>{{editForm.controls.nationalID.valid}}</h2>

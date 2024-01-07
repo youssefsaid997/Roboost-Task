@@ -8,13 +8,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>mdo</td>
-          <td>mdo</td>
-          <td>mdo</td>
+        <tr *ngFor="let student of students">
+          <td>{{student.Name}}</td>
+          <td>{{student.Age}}</td>
+          <td>{{student.NationalID}}</td>
+          <td>{{student.Email}}</td>
+          <td><a class="btn btn-warning" [routerLink]="student.ID+''" (click)="onEditClick(student.ID)">Edit</a></td>
+          <td><button class="btn btn-danger" (click)="onStudentDelete(student.ID)">Delete</button></td>
         </tr>
       </tbody>
     </table>
