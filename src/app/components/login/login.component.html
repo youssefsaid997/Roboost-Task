@@ -1,0 +1,13 @@
+<form [formGroup]="loginForm" class="form p-3" (submit)="onSubmitLogin()" >
+    <div class="row my-4">
+        <label>Username</label>
+        <app-input [control]="loginForm.controls.UserName"></app-input>
+    </div>
+    <div class="row  my-4">
+        <label>Passowrd</label>
+        <app-input [control]="loginForm.controls.Passowrd" [password]="'password'"></app-input>
+    </div>
+    <div class="row  my-4 d-flex justify-content-center">
+       <a routerLink="/student"  class="btn btn-primary w-75" >Login</a>
+    </div>
+</form>

@@ -1,4 +1,4 @@
-<input class="form-control" [formControl]="control">
+<input class="form-control" [formControl]="control" [type]="password">
 <ng-container *ngIf="control.errors && control.touched">
     <div *ngIf="control.errors['required']">
         value is required
