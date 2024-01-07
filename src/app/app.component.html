@@ -1,12 +1,5 @@
 <div class="container-md h-100 p-4">
-    <div class=" d-flex justify-content-between my-4">
-        <h2>Student List</h2>
-        <button class="btn btn-secondary" (click)="onModalToggle()">Add Student</button>
-      </div>
-    <router-outlet></router-outlet>
+   <router-outlet></router-outlet>
 </div>
-<div class="container-md container">
 
-    <app-add-student *ngIf="isModalOpen" (close)="onModalToggle()"></app-add-student>
-</div>
 

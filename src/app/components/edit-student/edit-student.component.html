@@ -1,0 +1,47 @@
+<div class="container container-md">
+    <form [formGroup]="editForm" class="form" (submit)="onEditStudent($event)">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <label for="">Student First Name</label>
+                <app-input [control]="editForm.controls.firstName"></app-input>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="">Student Last Name</label>
+                <app-input [control]="editForm.controls.lastName"></app-input>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <label for="">Student NationalID</label>
+                <app-input [control]="editForm.controls.nationalID"></app-input>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="">Student Age</label>
+                <app-input [control]="editForm.controls.age"></app-input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <label for="">Student Email</label>
+                <app-input [control]="editForm.controls.email"></app-input>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="">Student Mobile</label>
+                <app-input [control]="editForm.controls.mobile"></app-input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 ">
+                <label for="">Student Name in Arabic</label>
+                <app-input [control]="editForm.controls.NameArabic"></app-input>
+            </div>
+        </div>
+
+        
+        <div class="row mt-4 d-flex justify-content-center align-items-center" >
+            <button class="btn btn-outline-primary w-75">submit</button>
+        </div>
+       
+    </form>
+</div>
