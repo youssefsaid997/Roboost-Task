@@ -1,0 +1,17 @@
+<form [formGroup]="signupForm" class="form p-3"  >
+    <div class="row my-4">
+        <label>Name</label>
+        <app-input [control]="signupForm.controls.Name"></app-input>
+    </div>
+    <div class="row my-4">
+        <label>Username</label>
+        <app-input [control]="signupForm.controls.UserName"></app-input>
+    </div>
+    <div class="row  my-4">
+        <label>Passowrd</label>
+        <app-input [control]="signupForm.controls.Passowrd" [password]="'password'"></app-input>
+    </div>
+    <div class="row  my-4 d-flex justify-content-center">
+       <button routerLink="/student"  class="btn btn-primary w-75" (submit)="onSubmitSignup()">Sign up</button>
+    </div>
+</form>
