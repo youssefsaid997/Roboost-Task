@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IResponse } from 'src/app/models/Response';
 import { IStudent } from 'src/app/models/Studet';
@@ -9,7 +9,7 @@ import { StudentService } from 'src/app/services/student.service';
   templateUrl: './students-list.component.html',
   styleUrls: ['./students-list.component.css']
 })
-export class StudentsListComponent {
+export class StudentsListComponent implements OnChanges{
 
   students:IStudent[]|undefined
 
@@ -40,6 +40,12 @@ export class StudentsListComponent {
 
   onEditClick(id:number){
     console.log(id)
+  }
+
+  ngOnChanges(){
+    this.studentService.getStudents().subscribe((res:IResponse|any)=>{
+      this.students = res.Data;
+     })
   }
 
   onStudentDelete(id:number ){

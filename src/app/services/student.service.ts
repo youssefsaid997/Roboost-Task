@@ -16,7 +16,10 @@ export class StudentService {
     return this.httpClient.get("https://api.mohamed-sadek.com/Student/Get")
   }
 
-  createStudent(){}
+  createStudent(student:IStudent){
+    this.httpClient.post("https://api.mohamed-sadek.com/Student/POST",student).subscribe(data=>{console.log(data);
+    })
+  }
 
   updateStudent(student:any ,id:string){
     console.log(+id ,student);
@@ -30,8 +33,6 @@ export class StudentService {
       NameEnglish:student.firstName+ " "+ student.lastName,
 
     }
-    console.log(updatedStudent);
-    
     this.httpClient.put("https://api.mohamed-sadek.com/Student/PUT",updatedStudent).subscribe(data=>{
       console.log(data);
       
