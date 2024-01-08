@@ -17,10 +17,10 @@ const routes: Routes = [
       return import('../app/modules/student/student.module').then(
         (module) => module.StudentModule
         );
-      },
+      },canActivate:[authGuard]
 
     },
-    { path: 'student/:id', component: EditStudentComponent },
+    { path: 'student/:id', component: EditStudentComponent , canActivate:[authGuard] },
     { path: '', component: WelcomePageComponent },
     { path: '*', component: ErrorPageComponent },
 ];
