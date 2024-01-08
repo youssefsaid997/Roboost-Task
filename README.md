@@ -25,3 +25,42 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+# Project structure 
+
+### Project is seperated in modules 
+
+- Shared Module has Two main components 
+** <app-input> ** : a generic input component with its validation messages depending on the controller passed to it.
+
+** <app-form-component> ** : a generic form grouping all inputs with validation and binded to a form group.
+
+- Components
+    - edit student its a page consist of form to edit user data.
+    - login page
+    - sign up page
+    - welcome page that consist of the login page and welcome page 
+
+- Student module : which is used to add users and display list of users
+
+
+## services used
+
+### student service
+- For student CRUD operations
+
+### auth service 
+-To handle login , registeration and logout 
+
+## Guarding routes to by canActivate method
+
+
+## Used Bootstrap for UI and Bootstrap Icons
+
+# installation Steps
+
+- clone the repo
+- npm i -> to add the node_modules folder
+- ng serve -o --watch -> to run the app and watch for any changes
