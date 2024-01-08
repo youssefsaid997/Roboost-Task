@@ -33,9 +33,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ### Project is seperated in modules 
 
 - Shared Module has Two main components 
-** <app-input> ** : a generic input component with its validation messages depending on the controller passed to it.
+** app-input ** : a generic input component with its validation messages depending on the controller passed to it.
 
-** <app-form-component> ** : a generic form grouping all inputs with validation and binded to a form group.
+** app-form-component ** : a generic form grouping all inputs with validation and binded to a form group.
 
 - Components
     - edit student its a page consist of form to edit user data.
@@ -64,3 +64,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - clone the repo
 - npm i -> to add the node_modules folder
 - ng serve -o --watch -> to run the app and watch for any changes
+
+
+
+## Project Routes
+
+- /student to get to the student table --- you must be logged in
+
+- / it will go to welcome page where you can login 
+
+- /signup --> it will lead to resgisteration form
+
+- /student/:id it will lead to edit form
