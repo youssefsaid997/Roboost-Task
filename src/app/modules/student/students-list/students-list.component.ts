@@ -42,14 +42,18 @@ export class StudentsListComponent{
   ngAfterViewInit(){
     this.studentService.getStudents().subscribe((res:IResponse|any)=>{
       this.students = res.Data
+      this.showedStudents=[...res.Data]
     });
     
   }
-  ngAfterContentChecked(){
-    if(!this.searchQuery){
+  ngAfterContentInit(){
+    if(this.searchQuery){
       console.log(this.students);
     }
-    this.showedStudents=this.students
+    this.studentService.getStudents().subscribe((res:IResponse|any)=>{
+      this.students = res.Data
+      this.showedStudents=[...res.Data]
+    });
     
   }
   onSearchChange(value:any){
@@ -69,6 +73,6 @@ export class StudentsListComponent{
   }
 
   onStudentDelete(id:number ){
-    this.studentService.deleteStudent(id)    
+    this.studentService.deleteStudent(id)
   }
 }

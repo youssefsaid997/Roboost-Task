@@ -18,9 +18,9 @@ const routes: Routes = [
         (module) => module.StudentModule
         );
       },
-      canActivate:[authGuard]
+
     },
-    { path: 'student/:id', component: EditStudentComponent,canActivate:[authGuard] },
+    { path: 'student/:id', component: EditStudentComponent },
     { path: '', component: WelcomePageComponent },
     { path: '*', component: ErrorPageComponent },
 ];
