@@ -55,3 +55,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 -To handle login , registeration and logout 
 
 ## Guarding routes to by canActivate method
+
+
+## Used Bootstrap for UI and Bootstrap Icons
+
+# installation Steps
+
+- clone the repo
+- npm i -> to add the node_modules folder
+- ng serve -o --watch -> to run the app and watch for any changes
