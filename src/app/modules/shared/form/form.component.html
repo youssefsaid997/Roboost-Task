@@ -3,36 +3,36 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <label for="">Student First Name</label>
-                <app-input [control]="createStudentForm.controls.FirstName"></app-input>
+                <app-input [control]="createStudentForm.controls.FirstName" [group]="createStudentForm"></app-input>
             </div>
             <div class="col-12 col-md-6">
                 <label for="">Student Last Name</label>
-                <app-input [control]="createStudentForm.controls.LastName"></app-input>
+                <app-input [control]="createStudentForm.controls.LastName" [group]="createStudentForm"></app-input>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 col-md-6">
                 <label for="">Student NationalID</label>
-                <app-input [control]="createStudentForm.controls.NationalID"></app-input>
+                <app-input [control]="createStudentForm.controls.NationalID" [group]="createStudentForm"></app-input>
             </div>
             <div class="col-12 col-md-6">
                 <label for="">Student Age</label>
-                <app-input [control]="createStudentForm.controls.Age"></app-input>
+                <app-input [control]="createStudentForm.controls.Age" [group]="createStudentForm"></app-input>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-6">
                 <label for="">Student Email</label>
-                <app-input [control]="createStudentForm.controls.Email"></app-input>
+                <app-input [control]="createStudentForm.controls.Email" [group]="createStudentForm"></app-input>
             </div>
             <div class="col-12 col-md-6">
                 <label for="">Student Mobile</label>
-                <app-input [control]="createStudentForm.controls.Mobile"></app-input>
+                <app-input [control]="createStudentForm.controls.Mobile" [group]="createStudentForm"></app-input>
             </div>
         </div>    
         <div class="row mt-4 d-flex justify-content-center align-items-center" >
-            <a routerLink="/student" class="btn btn-outline-primary w-75" (click)="onCreateStudent($event)">submit</a>
+            <button routerLink="/student" class="btn btn-outline-primary w-75" (click)="onCreateStudent($event)">submit</button>
         </div>
        
     </form>

@@ -15,7 +15,7 @@
               <td>{{student.Age}}</td>
               <td>{{student.NationalID}}</td>
               <td>{{student.Email}}</td>
-              <td><a class="btn btn-warning" [routerLink]="student.ID+''" (click)="onEditClick(student.ID)">Edit</a></td>
+              <td><a class="btn btn-warning" [routerLink]="student.ID+''" >Edit</a></td>
               <td><button class="btn btn-danger" (click)="onStudentDelete(student.ID)">Delete</button></td>
           </tr>
       </tbody>

@@ -1,4 +1,5 @@
 import { Component,ElementRef, EventEmitter, OnDestroy, OnInit, Output  } from '@angular/core';
+import { StudentCrudService } from 'src/app/services/student-crud.service';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { StudentService } from 'src/app/services/student.service';
   styleUrls: ['./add-student.component.css']
 })
 export class AddStudentComponent implements OnInit , OnDestroy{
-  constructor(private element:ElementRef , private studentService :StudentService){}
+  constructor(private element:ElementRef , private studentCRUD:StudentCrudService){}
 
   
   @Output() close = new EventEmitter();
@@ -20,10 +21,15 @@ export class AddStudentComponent implements OnInit , OnDestroy{
   }
 
   onSubmit(value:any){
-    this.studentService.createStudent(value)
     console.log(value);
-    
-    
+    if(value){
+      this.studentCRUD.createStudent(value).then((data)=>{
+        console.log(data.data);
+      }).catch(err=>{
+        console.log(err);
+      })
+    }
+    this.onModalClose()
   }
 
   ngOnDestroy(){
