@@ -1,9 +1,9 @@
-import { Component, DoCheck, OnChanges, SimpleChange } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { IResponse } from 'src/app/models/Response';
+import { Component} from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IStudent } from 'src/app/models/Studet';
 import { StudentCrudService } from 'src/app/services/student-crud.service';
-import { StudentService } from 'src/app/services/student.service';
+
 
 @Component({
   selector: 'app-students-list',
@@ -15,7 +15,7 @@ export class StudentsListComponent{
   students:IStudent[]|undefined
   showedStudents:IStudent[]|undefined
   filteredStudents:IStudent[]|undefined
-  constructor( private studentCRUD: StudentCrudService){
+  constructor( private studentCRUD: StudentCrudService , private toastr:ToastrService,private route :Router){
   }
 
   tableHeader = {
@@ -33,7 +33,7 @@ export class StudentsListComponent{
 
   ngAfterContentChecked(){
     // this.getAllStudents();
-    console.log(this.students);
+    this.showedStudents = this.students
     
   }
   getObjectValues(object: Object) {
@@ -54,6 +54,8 @@ export class StudentsListComponent{
   deleteStudent(id:number){
     this.studentCRUD.deleteStudent(id).then((data)=>{
       console.log(data.data); 
+      this.showSuccess(data.data.Message);
+
     }).catch((err)=>{
       console.log(err);
       
@@ -67,6 +69,13 @@ export class StudentsListComponent{
     }).catch(err=>{
       console.log(err);
     })
+  }
+
+  showSuccess(msg:string){
+    this.toastr.success(msg)
+  }
+  showError(msg:string){
+    this.toastr.error(msg)
   }
   
 }

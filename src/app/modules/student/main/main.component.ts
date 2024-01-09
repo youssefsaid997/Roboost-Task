@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthAxiosService } from 'src/app/services/auth-axios.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,16 +9,22 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-  constructor(private auth:AuthService){}
+  constructor(private auth:AuthService , private authService:AuthAxiosService, private route:Router){}
 
   isModalOpen=false;
   onModalToggle(){
     this.isModalOpen = !this.isModalOpen
   }
 
-  onLogout(){
-    this.auth.userLogout().subscribe(data=>{
+  onLogout(event:Event){
+    event?.preventDefault()
+    this.authService.logoutUser().then((data)=>{
       console.log(data);
+      
+      this.route.navigateByUrl("/")
+      localStorage.removeItem("token")
+    }).catch(err=>{
+      console.log(err);
       
     })
   }

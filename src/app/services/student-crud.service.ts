@@ -15,10 +15,12 @@ export class StudentCrudService {
   getOneStudent(id:number){
     return axios.get(API_URL+`/GetByID?id=${id}`);
   }
-  updateStudent(id:number , updatedStudent:IStudent){
+  updateStudent(id:number , updatedStudent:IStudent|any){
     const updated = {
-      ...updatedStudent,
-      id
+      NameArabic: updatedStudent.NameArabic,
+  NameEnglish: updatedStudent.FirstName +" "+ updatedStudent.LastName,
+  ID: id,
+  ...updatedStudent
     }
     return axios.put(API_URL+`/PUT`,updated)
   }
