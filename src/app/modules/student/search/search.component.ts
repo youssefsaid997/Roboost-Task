@@ -11,11 +11,11 @@ export class SearchComponent  {
 searchQuery=""
 @Output() searchChange = new EventEmitter()
 
-constructor(private studentService:StudentService){}
-
 ngDoCheck(){
   if(this.searchQuery){
     this.searchChange.emit(this.searchQuery)
+  }else{
+    this.searchChange.emit("")
   }
 }
 

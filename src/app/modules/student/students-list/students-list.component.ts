@@ -1,7 +1,8 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, DoCheck, OnChanges, SimpleChange } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IResponse } from 'src/app/models/Response';
 import { IStudent } from 'src/app/models/Studet';
+import { StudentCrudService } from 'src/app/services/student-crud.service';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -12,13 +13,11 @@ import { StudentService } from 'src/app/services/student.service';
 export class StudentsListComponent{
 
   students:IStudent[]|undefined
-  searchQuery=""
   showedStudents:IStudent[]|undefined
   filteredStudents:IStudent[]|undefined
-  subscriber!: Subscription;
-  constructor(private studentService:StudentService){
-
+  constructor( private studentCRUD: StudentCrudService){
   }
+
   tableHeader = {
     rowNumbers: '#',
     studentName: 'Student Name',
@@ -28,51 +27,46 @@ export class StudentsListComponent{
     deleteBtn: 'Delete',
   };
 
+  ngOnInit(){
+    this.getAllStudents();
+  }
+
+  ngAfterContentChecked(){
+    // this.getAllStudents();
+    console.log(this.students);
+    
+  }
   getObjectValues(object: Object) {
     return Object.values(object);
   }
 
-  ngOnInit(){
-    this.studentService.getStudents().subscribe((res:IResponse|any)=>{
-      this.students = res.Data
-      this.showedStudents=[...res.Data]
-    });
-  }
-
-  ngAfterViewInit(){
-    this.studentService.getStudents().subscribe((res:IResponse|any)=>{
-      this.students = res.Data
-      this.showedStudents=[...res.Data]
-    });
-    
-  }
-  ngAfterContentInit(){
-    if(this.searchQuery){
-      console.log(this.students);
-    }
-    this.studentService.getStudents().subscribe((res:IResponse|any)=>{
-      this.students = res.Data
-      this.showedStudents=[...res.Data]
-    });
-    
-  }
   onSearchChange(value:any){
-    this.searchQuery=value
-    if(this.searchQuery){
-      this.filteredStudents = this.students?.filter(student=>{
-        return student.Name.toLowerCase().includes(value)
-      })
-      this.showedStudents=this.filteredStudents;
-    }else{
-      this.showedStudents=this.students
-    }
-  }
-
-  onEditClick(id:number){
-    console.log(id)
+    this.filteredStudents = this.students?.filter((student)=>{
+     return student.Name.toLowerCase().includes(value)
+    })
+      this.showedStudents=this.filteredStudents
   }
 
   onStudentDelete(id:number ){
-    this.studentService.deleteStudent(id)
+    this.deleteStudent(id)
   }
+
+  deleteStudent(id:number){
+    this.studentCRUD.deleteStudent(id).then((data)=>{
+      console.log(data.data); 
+    }).catch((err)=>{
+      console.log(err);
+      
+    })
+  }
+  getAllStudents(){
+    this.studentCRUD.getStudents().then(data=>{
+    this.students=data.data.Data
+    this.showedStudents = this.students
+
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
+  
 }

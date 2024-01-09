@@ -20,7 +20,13 @@ export class FormComponent {
 
   onCreateStudent(event:Event){
     event.preventDefault()
+    console.log("clicked");
     const data = this.createStudentForm.value;
-    this.createStudent.emit(data)
+    if(this.createStudentForm.status === "INVALID"){
+      this.createStudentForm.markAllAsTouched()
+    }else{
+      console.log(data);
+      this.createStudent.emit(data)
+    }
   }
 }
