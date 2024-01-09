@@ -1,4 +1,5 @@
 import { Component,ElementRef, EventEmitter, OnDestroy, OnInit, Output  } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { StudentCrudService } from 'src/app/services/student-crud.service';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -8,7 +9,7 @@ import { StudentService } from 'src/app/services/student.service';
   styleUrls: ['./add-student.component.css']
 })
 export class AddStudentComponent implements OnInit , OnDestroy{
-  constructor(private element:ElementRef , private studentCRUD:StudentCrudService){}
+  constructor(private element:ElementRef , private studentCRUD:StudentCrudService , private toastr:ToastrService){}
 
   
   @Output() close = new EventEmitter();
@@ -21,13 +22,17 @@ export class AddStudentComponent implements OnInit , OnDestroy{
   }
 
   onSubmit(value:any){
-    console.log(value);
     if(value){
       this.studentCRUD.createStudent(value).then((data)=>{
         console.log(data.data);
+        this.toastr.success(data.data.Message)
       }).catch(err=>{
         console.log(err);
+        this.toastr.success(err.Message)
       })
+    }else{
+      this.toastr.success("Form is not valid")
+
     }
     this.onModalClose()
   }
